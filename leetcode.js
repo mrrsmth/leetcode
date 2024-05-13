@@ -162,3 +162,118 @@ const findTheDifference = (s, t) => {
 
   return sortedT[sortedT.length - 1];
 };
+
+
+// https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3238/
+// Max Consecutive Ones
+
+// Given a binary array nums, return the maximum number of consecutive 1's in the array.
+
+ 
+
+// Example 1:
+
+// Input: nums = [1,1,0,1,1,1]
+// Output: 3
+// Explanation: The first two digits or the last three digits are consecutive 1s. The maximum number of consecutive 1s is 3.
+// Example 2:
+
+// Input: nums = [1,0,1,1,0,1]
+// Output: 2
+
+// Constraints:
+
+// 1 <= nums.length <= 105
+// nums[i] is either 0 or 1.
+
+const findMaxConsecutiveOnes = (nums) => {
+  let maxCount = 0;
+  let currentCount = 0;
+
+  for (let num of nums) {
+    if (num === 1) {
+      currentCount++;
+    } else {
+      maxCount = Math.max(maxCount, currentCount);
+      currentCount = 0;
+    }
+  }
+
+  return Math.max(maxCount, currentCount);
+}
+
+// Find Numbers with Even Number of Digits
+https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3237/
+// Given an array nums of integers, return how many of them contain an even number of digits.
+
+// Example 1:
+
+// Input: nums = [12,345,2,6,7896]
+// Output: 2
+// Explanation: 
+// 12 contains 2 digits (even number of digits). 
+// 345 contains 3 digits (odd number of digits). 
+// 2 contains 1 digit (odd number of digits). 
+// 6 contains 1 digit (odd number of digits). 
+// 7896 contains 4 digits (even number of digits). 
+// Therefore only 12 and 7896 contain an even number of digits.
+// Example 2:
+
+// Input: nums = [555,901,482,1771]
+// Output: 1 
+// Explanation: 
+// Only 1771 contains an even number of digits.
+ 
+
+// Constraints:
+
+// 1 <= nums.length <= 500
+// 1 <= nums[i] <= 105
+
+const findNumbers = (nums) => {
+  let counter = 0;
+    nums.forEach(item => {
+      if (item.toString().length % 2 === 0) {
+        counter++;
+      }
+    })
+    return counter;
+};
+
+
+// Squares of a Sorted Array
+// https://leetcode.com/explore/learn/card/fun-with-arrays/521/introduction/3240/
+// Given an integer array nums sorted in non-decreasing order, return an array of the squares of each number sorted in non-decreasing order.
+
+ 
+
+// Example 1:
+
+// Input: nums = [-4,-1,0,3,10]
+// Output: [0,1,9,16,100]
+// Explanation: After squaring, the array becomes [16,1,0,9,100].
+// After sorting, it becomes [0,1,9,16,100].
+// Example 2:
+
+// Input: nums = [-7,-3,2,3,11]
+// Output: [4,9,9,49,121]
+ 
+
+// Constraints:
+
+// 1 <= nums.length <= 104
+// -104 <= nums[i] <= 104
+// nums is sorted in non-decreasing order.
+ 
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+
+const sortedSquares = (nums) => {
+  const output = nums.map(item => item * item);
+
+  return output.sort((a, b) => {
+    return a - b;
+  });
+};
